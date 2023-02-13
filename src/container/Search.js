@@ -7,6 +7,10 @@ export default function Search() {
   const {state, dispatch} = useContext(StateContext);
   const [filteredList, setSearchTerm] = useSearch(state.posts);
 
+  useEffect(() => {
+    dispatch({type: Actions.endSearch});
+  }, []);
+
   return (
     <div className={"Search" + " Search--" + state.theme}>
       <input
@@ -16,7 +20,9 @@ export default function Search() {
           if (e.target.value == "") {
             dispatch({type: Actions.endSearch})
           } else {
+            console.log("searching");
             setSearchTerm(e.target.value);
+            console.log(filteredList);
             dispatch({type: Actions.searching, payload: {searchedList: filteredList}});
           }
         }}

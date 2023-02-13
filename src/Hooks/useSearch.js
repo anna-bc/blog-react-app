@@ -5,6 +5,7 @@ export default function useSearch(posts) {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    console.log(searchTerm);
     let filtered = posts.filter(
       (post) =>
         post.title.includes(searchTerm) || post.content.includes(searchTerm)

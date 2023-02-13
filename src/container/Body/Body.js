@@ -50,7 +50,7 @@ export default function Body() {
       }
     >
       <div className="sideBarWrapper">
-        {/* <Search /> */}
+        <Search />
         {state.isLoggedIn ? (
           <PostForm />
         ) : (

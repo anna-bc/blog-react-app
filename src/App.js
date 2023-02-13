@@ -10,25 +10,25 @@ import Actions from "./state/Actions/Actions";
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState);
 
-  // useEffect(() => {
-  //   let storedTheme = localStorage.getItem("theme");
-  //   if (!storedTheme) {
-  //     storedTheme =  "light";
-  //   }
-  //   dispatch({type: Actions.setTheme, payload: {theme: storedTheme}});
+  useEffect(() => {
+    let storedTheme = JSON.parse(localStorage.getItem("theme"));
+    if (!storedTheme) {
+      storedTheme =  "light";
+    }
+    dispatch({type: Actions.setTheme, payload: {theme: storedTheme}});
 
-  // }, []);
+  }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem("theme", state.theme);
-  // }, [state.theme]);
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(state.theme));
+  }, [state.theme]);
 
   useEffect(() => {
     console.log(state.posts);
     if (state.posts.length) {
       return;
     }
-    let storedPosts = localStorage.getItem("posts");
+    let storedPosts = JSON.parse(localStorage.getItem("posts"));
     if (!storedPosts) {
       console.log("using hardcoded posts");
       storedPosts = [
@@ -50,6 +50,10 @@ function App() {
       ];
     }
     dispatch({type: Actions.addPosts, payload: { posts: storedPosts }});
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("posts", JSON.stringify(state.posts));
   }, [state.posts]);
 
   return (

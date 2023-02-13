@@ -26,7 +26,7 @@ export default function Post(props) {
 
   function onSubmit(e) {
     e.preventDefault();
-    dispatch({type: Actions.editPost, payload: {post: props.post}})
+    dispatch({type: Actions.editPost, payload: {post: props.post, editedPost: newPost}})
     setIsEditing(false);
   }
 

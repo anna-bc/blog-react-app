@@ -15,7 +15,7 @@ export default function PostForm(props) {
 
   function onSubmit(e) {
     e.preventDefault();
-    dispatch({type: Actions.addPosts, payload: {post: post}});
+    dispatch({type: Actions.addPost, payload: {post: post}});
   }
 
   return (

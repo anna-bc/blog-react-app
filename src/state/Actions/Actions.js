@@ -1,6 +1,7 @@
 const Actions = {
     setTheme: 'setTheme',
     toggleTheme: 'toggle',
+    addPost: 'addPost',
     addPosts: 'addPosts',
     removePost: 'removePost',
     loginUser: 'loginUser',
