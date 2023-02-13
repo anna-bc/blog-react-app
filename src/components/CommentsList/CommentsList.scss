@@ -1,0 +1,12 @@
+.CommentsList {
+    box-sizing: border-box;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 20px 10px 20px;
+}
+
+#commentList {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}

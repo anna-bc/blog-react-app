@@ -1,0 +1,20 @@
+.PostList {
+
+    & ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    }
+
+    &--light {
+        background-color: #F2e9eb;
+    }
+
+    &--dark {
+        background-color: #979197;
+    }
+}
+
+li {
+    margin: 20px 0px;
+}

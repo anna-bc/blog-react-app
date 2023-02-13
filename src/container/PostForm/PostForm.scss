@@ -1,0 +1,115 @@
+.PostForm {
+    width: 65%;
+    position: sticky;
+    top: 95%;
+    &--light {
+        background: #F2e9eb;
+        
+        & .formWrapper {
+            border: thin solid #DD8EA4;
+
+            & input, textarea {
+                background-color: white;
+                color: black;
+            }
+
+            & input::placeholder, textarea::placeholder {
+                color: gray;
+            }
+
+            & .title, .content, .moderationWrapper {
+                border: thin solid #DD8EA4;
+            }
+        }
+    }
+
+    &--dark {  
+        background-color: #979197;
+        color: white;
+
+        & .formWrapper {
+            border: thin solid #554d56;
+
+            & input, textarea {
+                background-color: #979197;
+                color: white;
+            }
+
+            & input::placeholder, textarea::placeholder {
+                color: white;
+            }
+            
+            .title {
+                background-color: #554d56;
+            }
+
+            & .title, .content, .moderationWrapper {
+                border: thin solid #554d56;
+            }
+
+            & .buttons__item {
+                background-color: #554d56;
+            }
+        }
+    }
+
+}
+
+.formWrapper {
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    border-radius: 5px;
+    }
+
+.form__item {
+    // padding: 10px 20px 10px 20px;
+    display: flex;
+}
+
+.title {
+    width: 100%;
+    height: 50px;
+    font-size: 28px;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.title::placeholder {
+    color: white;
+}
+
+.content {
+    height: 200px;
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 10px;
+}
+
+.moderationWrapper {
+    height: 50px;
+    /* padding: 1px 20px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.moderation__item {
+    padding: 10px 20px;
+}
+
+.buttons__item {
+    margin-left: 10px;
+    width: 60px;
+    height: 25px;
+}
+
+.newPost {
+    text-align: center;
+    margin: 20px 0px;
+    font-size: 28px;
+    font-weight: 600;
+}

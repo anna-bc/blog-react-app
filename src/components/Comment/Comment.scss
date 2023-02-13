@@ -1,0 +1,21 @@
+.Comment {
+    padding: 10px 20px 10px 20px;
+    &--light {
+        border-bottom: thin dashed #DD8EA4;
+    }
+
+    &--dark {
+        border-bottom: thin dashed #554d56;
+    }
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.titleContainer__item--title {
+    font-weight: 900;
+    padding-bottom: 10px;
+}

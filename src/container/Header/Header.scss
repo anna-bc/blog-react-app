@@ -1,0 +1,76 @@
+.Header {
+    box-sizing: border-box;
+    height: 10vh;
+    width: 100vw;
+    margin: auto;
+    display: flex;
+    gap: 100px;
+    justify-content: space-around;
+
+    &--light {
+        background-color: #F2e9eb;
+
+        & div button {
+            background-color: #DD8EA4;
+            color: white;
+        }
+    }
+
+    &--dark {
+        background-color: #342f35;
+        color: white;
+
+        & div button {
+            background-color: #554d56;
+            color: white;
+        }
+    }
+}
+
+.header__item {
+    width: 33%;
+}
+
+.header__item--logo {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header__item--navigation {
+    width: 65%;
+    display: flex;
+    flex-grow: 2;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+}
+
+.nav__item {
+    display: flex;
+    align-items: center;
+}
+
+.header__item--theme {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header__item--theme button {
+    height: 30px;
+    width: 90px;
+    border-radius: 5px;
+}
