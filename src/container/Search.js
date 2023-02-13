@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useSearch from "../Hooks/useSearch";
+import Actions from "../state/Actions/Actions";
+import { StateContext } from "../state/context/context";
 
-export default function Search(props) {
-  const [filteredList, setSearchTerm] = useSearch(props.posts);
-
+export default function Search() {
+  const {state, dispatch} = useContext(StateContext);
+  const [filteredList, setSearchTerm] = useSearch(state.posts);
 
   return (
-    <div className={"Search" + " Search--" + props.theme}>
+    <div className={"Search" + " Search--" + state.theme}>
       <input
         type="text"
         placeholder="Search for posts"
         onInput={(e) => {
           if (e.target.value == "") {
-            props.setIsSearching(false);
+            dispatch({type: Actions.endSearch})
           } else {
             setSearchTerm(e.target.value);
-            props.showFilteredList(filteredList);
-            props.setIsSearching(true);
+            dispatch({type: Actions.searching, payload: {searchedList: filteredList}});
           }
         }}
       ></input>
