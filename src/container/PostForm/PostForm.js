@@ -1,8 +1,11 @@
 import "./PostForm.scss";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { StateContext } from "../../state/context/context";
+import Actions from "../../state/Actions/Actions";
 
 export default function PostForm(props) {
+  const {state, dispatch} = useContext(StateContext);
   const [post, setPost] = useState({
     title: "",
     content: "",
@@ -12,10 +15,7 @@ export default function PostForm(props) {
 
   function onSubmit(e) {
     e.preventDefault();
-    setPost(post);
-    if (!props.isEditing) {
-      props.addPost(post);
-    }
+    dispatch({type: Actions.addPosts, payload: {post: post}});
   }
 
   return (
@@ -23,7 +23,7 @@ export default function PostForm(props) {
       className={
         "PostForm" +
         " PostForm" +
-        (props.theme === "light" ? "--light" : "--dark")
+        (state.theme === "light" ? "--light" : "--dark")
       }
     >
       <div className="newPost">Add a new Post</div>

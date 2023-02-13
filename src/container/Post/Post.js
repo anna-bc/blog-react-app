@@ -1,10 +1,13 @@
 import "./Post.scss";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CommentsList from "../../components/CommentsList/CommentsList";
 import CommentForm from "../CommentForm/CommentForm";
+import { StateContext } from "../../state/context/context";
+import Actions from "../../state/Actions/Actions";
 
 export default function Post(props) {
+  const {state, dispatch} = useContext(StateContext);
   const [newPost, setNewPost] = useState({
     title: props.post.title,
     content: props.post.content,
@@ -17,20 +20,13 @@ export default function Post(props) {
     setIsEditing(true);
   }
 
-  function handleDeleteClick() {
-    props.deleteClick(props.post);
-  }
+  // function handleDeleteClick() {
+  //   props.deleteClick(props.post);
+  // }
 
   function onSubmit(e) {
     e.preventDefault();
-    const newPosts = [...props.posts].map((p, i) => {
-      if (props.posts.indexOf(props.post) == i) {
-        return newPost;
-      }
-      return p;
-    });
-
-    props.setPostList(newPosts);
+    dispatch({type: Actions.editPost, payload: {post: props.post}})
     setIsEditing(false);
   }
 
@@ -80,14 +76,14 @@ export default function Post(props) {
             className={
               "Post" +
               " Post" +
-              (props.theme === "light" ? "--light" : "--dark")
+              (state.theme === "light" ? "--light" : "--dark")
             }
           >
             <div className="post__item title">{props.post.title}</div>
             <div className="post__item content"> {props.post.content} </div>
             <div className="moderationWrapper">
               <div className="moderation__item author">{props.post.author}</div>
-              {props.isLoggedIn ? (
+              {state.isLoggedIn ? (
                 <div className="moderation__item buttons">
                   <button
                     className="buttons__item"
@@ -99,7 +95,7 @@ export default function Post(props) {
                   <button
                     className="buttons__item"
                     id="deletBtn"
-                    onClick={handleDeleteClick}
+                    onClick={() => dispatch({type: Actions.removePost, payload: {post: props.post}})}
                   >
                     Delete
                   </button>
@@ -108,13 +104,12 @@ export default function Post(props) {
                 <></>
               )}
             </div>
-            <div className="commentSection">
+            {/* <div className="commentSection">
               <CommentsList
-                theme={props.theme}
+                theme={state.theme}
                 comments={props.post.comments}
               />
               <CommentForm 
-              theme={props.theme}
               addComment={(comment) => {
                 let newPost = {...props.post, comments: [...props.post.comments, comment]}
                 let idx = props.posts.indexOf(props.post);
@@ -128,7 +123,7 @@ export default function Post(props) {
                 props.setPostList(newPosts);
               }
             } />
-            </div>
+            </div> */}
           </div>
       )}
     </>

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import Actions from "../../state/Actions/Actions";
+import { StateContext } from "../../state/context/context";
 
 import "./Login.scss";
 
 export default function Login(props) {
+  const {state, dispatch} = useContext(StateContext);
+
   const [username, setUsername] = useState("");
 
   const [password, setPassword] = useState("");
@@ -35,7 +39,7 @@ export default function Login(props) {
     let authData = checkIfUsernameExists(username);
 
     if (authData && username === authData.username  && password === authData.password) {
-      props.setIsLoggedIn(true);
+      dispatch({type: Actions.loginUser});
     }
     else {
       return alert('Your username or password is not right!');
@@ -45,8 +49,7 @@ export default function Login(props) {
   return (
     <div className={
       "Login" +
-      " Login" +
-      (props.theme === "light" ? "--light" : "--dark")
+      " Login" + state.theme
     }>
       <div className="formTitle">Login to edit and delete Posts</div>
       <form id="loginForm" onSubmit={handleSubmit}>
