@@ -13,19 +13,19 @@ export default function Body() {
   return (
     <div
       className={
-        "Body Body" + state.theme
+        "Body Body--" + state.theme
       }
     >
       <div className="sideBarWrapper">
-        <Search />
+        <Search state={state} dispatch={dispatch} />
         {state.isLoggedIn ? (
-          <PostForm />
+          <PostForm state={state} dispatch={dispatch} />
         ) : (
           null
         )}
       </div>
       <div className="posts">
-        <PostList />
+        <PostList state={state} />
       </div>
       <div className="sideBarWrapper">
         {!state.isLoggedIn ? <Login state={state} dispatch={dispatch} /> : null}

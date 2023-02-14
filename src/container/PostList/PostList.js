@@ -1,11 +1,8 @@
 import "./PostList.scss";
 import Post from "../Post/Post";
-import { useContext, useEffect, useState } from "react";
-import { StateContext } from "../../state/context/context";
-import Actions from "../../state/Actions/Actions";
+import { useEffect, useState } from "react";
 
-export default function PostList() {
-  const {state, dispatch} = useContext(StateContext);
+export default function PostList({state}) {
   const [postsList, setPostsList] = useState([]);
 
   useEffect(() => {
@@ -24,9 +21,8 @@ export default function PostList() {
   return (
     <div
       className={
-        "PostList" +
-        " PostList" +
-        (state.theme === "light" ? "--light" : "--dark")
+        "PostList PostList--" +
+        state.theme
       }
     >
       <ul>

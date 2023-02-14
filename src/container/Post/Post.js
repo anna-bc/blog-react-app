@@ -5,75 +5,24 @@ import CommentsList from "../../components/CommentsList/CommentsList";
 import CommentForm from "../CommentForm/CommentForm";
 import { StateContext } from "../../state/context/context";
 import Actions from "../../state/Actions/Actions";
+import PostEditForm from "./PostEditForm/PostEditForm";
 
 export default function Post(props) {
   const {state, dispatch} = useContext(StateContext);
-  const [newPost, setNewPost] = useState({
-    title: props.post.title,
-    content: props.post.content,
-    author: props.post.author,
-  });
-
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
     setIsEditing(true);
   }
 
-
-  function onSubmit(e) {
-    e.preventDefault();
-    dispatch({type: Actions.editPost, payload: {post: props.post, editedPost: newPost}})
-    setIsEditing(false);
-  }
-
   return (
     <>
       {isEditing ? (
-        <div className="editWrapper">
-          <div className="newPost">
-            {isEditing ? "Add a new Post" : "Edit the Post"}
-          </div>
-          <form className="formWrapper" onSubmit={onSubmit}>
-            <input
-              type="text"
-              className="form__item title"
-              defaultValue={props.post.title}
-              placeholder="Write a Title"
-              onChange={(e) =>
-                setNewPost({ ...props.post, title: e.target.value })
-              }
-            />
-            <textarea
-              className="form__item content"
-              defaultValue={props.post.content}
-              placeholder="Write some content in here"
-              onChange={(e) =>
-                setNewPost({ ...props.post, content: e.target.value })
-              }
-            />
-            <div className="moderationWrapper">
-              <input
-                type="text"
-                className="moderation__item author"
-                defaultValue={props.post.author}
-                placeholder="who wrote this post?"
-                onChange={(e) =>
-                  setNewPost({ ...props.post, author: e.target.value })
-                }
-              />
-              <div className="moderation__item buttons">
-                <input type="submit" className="buttons__item" />
-              </div>
-            </div>
-          </form>
-        </div>
-      ) : (
+        <PostEditForm post={props.post} setIsEditing={setIsEditing} dispatch={dispatch} />) : (
           <div
             className={
-              "Post" +
-              " Post" +
-              (state.theme === "light" ? "--light" : "--dark")
+              "Post Post--" +
+              state.theme
             }
           >
             <div className="post__item title">{props.post.title}</div>

@@ -3,8 +3,7 @@ import useSearch from "../Hooks/useSearch";
 import Actions from "../state/Actions/Actions";
 import { StateContext } from "../state/context/context";
 
-export default function Search() {
-  const { state, dispatch } = useContext(StateContext);
+export default function Search({state, dispatch}) {
   const [filteredList, setSearchTerm] = useSearch(state.posts);
 
   useEffect(() => {

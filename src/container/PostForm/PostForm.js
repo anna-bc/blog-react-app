@@ -4,8 +4,8 @@ import { useContext, useState } from "react";
 import { StateContext } from "../../state/context/context";
 import Actions from "../../state/Actions/Actions";
 
-export default function PostForm(props) {
-  const {state, dispatch} = useContext(StateContext);
+export default function PostForm({state, dispatch}) {
+
   const [post, setPost] = useState({
     title: "",
     content: "",
