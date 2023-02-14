@@ -6,19 +6,19 @@ import Actions from "../../state/Actions/Actions";
 
 export default function PostList() {
   const {state, dispatch} = useContext(StateContext);
-  const [postsList, setPostsList] = useState(state.posts);
+  const [postsList, setPostsList] = useState([]);
 
   useEffect(() => {
-    setPostsList(state.posts);
-  })
+    setPostsList([...state.posts]);
+  }, []);
 
   useEffect(() => {
-    if (state.isSearching == true) {
-      setPostsList(state.searchList)
+    if (state.isSearching) {
+      setPostsList([...state.searchList]);
     } else {
-      setPostsList(state.posts);
+      setPostsList([...state.posts]);
     }
-  }, [state.isSearching]);
+  }, [state.searchList]);
 
 
   return (
@@ -34,7 +34,7 @@ export default function PostList() {
           <li key={i}>
             <Post
               post={post}
-              posts={state.posts}
+            
             />
           </li>
         ))}

@@ -7,7 +7,9 @@ const Actions = {
     loginUser: 'loginUser',
     editPost: 'editPost',
     searching: 'searching',
+    setFiltered: 'setFiltered',
     endSearch: 'endSearch',
+    addCommentToPost: 'addCommentToPost',
 
 };
 export default Actions;

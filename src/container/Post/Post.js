@@ -20,9 +20,6 @@ export default function Post(props) {
     setIsEditing(true);
   }
 
-  // function handleDeleteClick() {
-  //   props.deleteClick(props.post);
-  // }
 
   function onSubmit(e) {
     e.preventDefault();
@@ -104,26 +101,17 @@ export default function Post(props) {
                 <></>
               )}
             </div>
-            {/* <div className="commentSection">
+            <div className="commentSection">
               <CommentsList
                 theme={state.theme}
                 comments={props.post.comments}
               />
               <CommentForm 
               addComment={(comment) => {
-                let newPost = {...props.post, comments: [...props.post.comments, comment]}
-                let idx = props.posts.indexOf(props.post);
-                const newPosts = [...props.posts].map((p, i) => {
-                  if (idx == i) {
-                    return newPost;
-                  }
-                  return p;
-                });
-            
-                props.setPostList(newPosts);
+                dispatch({type: Actions.addCommentToPost, payload: {post: props.post, comment: comment}});
               }
             } />
-            </div> */}
+            </div>
           </div>
       )}
     </>
