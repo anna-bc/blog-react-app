@@ -1,0 +1,118 @@
+.PostDetailPage {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
+
+    & .content {
+        padding-bottom: 10px;
+        height: auto;
+
+    }
+  
+    &--light {
+      background: #f2e9eb;
+      border: thin solid #dd8ea4;
+  
+      & .title {
+        border: thin solid #dd8ea4;
+        background-color: #dd8ea4;
+        color: white;
+      }
+  
+      & .content {
+        border: thin solid #dd8ea4;
+      }
+  
+      & .commentSection {
+        border: thin solid #dd8ea4;
+      }
+  
+      & .moderationWrapper {
+        border: thin solid #dd8ea4;
+  
+        & #editBtn {
+          background-color: #fedd89;
+        }
+        
+        & #deletBtn {
+          background-color: #dd8ea4;
+          color: white;
+        }
+      }
+    }
+  
+    &--dark {
+      background: #979197;
+      border: thin solid #554d56;
+  
+      & .title {
+        border: thin solid #554d56;
+        background-color: #554d56;
+        color: white;
+      }
+      & .content {
+        border: thin solid #554d56;
+      }
+  
+      & .commentSection {
+        border: thin solid #554d56;
+      }
+  
+      & .moderationWrapper {
+        border: thin solid #554d56;
+  
+        & #editBtn {
+          background-color: #80611b;
+          color: white;
+        }
+        
+        & #deletBtn {
+          background-color: #554d56;
+          color: white;
+        }
+      }
+    }
+  }
+  
+  .PostDetailPage__item {
+    padding: 10px 20px 10px 20px;
+    display: flex;
+  }
+  
+  .title {
+    /* width: 95%; */
+    height: 50px;
+    font-size: 28px;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .moderationWrapper {
+    height: 50px;
+    /* padding: 1px 20px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    /* background-color: #DD8EA4; */
+  }
+  
+  .moderation__item {
+    padding: 10px 20px;
+  }
+  
+  .buttons__item {
+    margin-left: 10px;
+    width: 60px;
+    height: 25px;
+    border-radius: 5px;
+  }
+  
+  .editWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
