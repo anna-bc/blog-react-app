@@ -1,58 +1,14 @@
-import { useContext, useState } from "react";
-import Actions from "../../state/Actions/Actions";
-import { StateContext } from "../../state/context/context";
-
+import useLogin from "../../Hooks/useLogin";
 import "./Login.scss";
 
-export default function Login(props) {
-  const {state, dispatch} = useContext(StateContext);
+export default function Login({state, dispatch}) {
 
-  const [username, setUsername] = useState("");
-
-  const [password, setPassword] = useState("");
-
-  const [authInfos, setAuthInfos] = useState(() => {
-    const auths = JSON.parse(localStorage.getItem("authInfos"));
-    if (!auths) {
-      return [
-        {
-          username: "anna",
-          password: "anna123",
-        },
-        {
-          username: "kickinit",
-          password: "123pwd",
-        },
-      ];
-    }
-    return auths;
-  });
-
-  function checkIfUsernameExists(username) {
-    let obj = authInfos.find( (el, i) => el.username === username )
-    return obj;
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    let authData = checkIfUsernameExists(username);
-
-    if (authData && username === authData.username  && password === authData.password) {
-      dispatch({type: Actions.loginUser});
-    }
-    else {
-      return alert('Your username or password is not right!');
-    }
-  }
+  const [isAuthenticated, handleLogin, setUsername, setPassword] = useLogin(dispatch);
 
   return (
-    <div className={
-      "Login" +
-      " Login" + state.theme
-    }>
+    <div className={"Login Login" + state.theme}>
       <div className="formTitle">Login to edit and delete Posts</div>
-      <form id="loginForm" onSubmit={handleSubmit}>
+      <form id="loginForm" onSubmit={handleLogin}>
         <div className="login__item">
           <label htmlFor="username">Username:</label>
           <input

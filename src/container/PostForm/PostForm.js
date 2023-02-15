@@ -4,8 +4,8 @@ import { useContext, useState } from "react";
 import { StateContext } from "../../state/context/context";
 import Actions from "../../state/Actions/Actions";
 
-export default function PostForm(props) {
-  const {state, dispatch} = useContext(StateContext);
+export default function PostForm({state, dispatch}) {
+
   const [post, setPost] = useState({
     title: "",
     content: "",
@@ -15,7 +15,7 @@ export default function PostForm(props) {
 
   function onSubmit(e) {
     e.preventDefault();
-    dispatch({type: Actions.addPosts, payload: {post: post}});
+    dispatch({type: Actions.addPost, payload: {post: post}});
   }
 
   return (
