@@ -1,20 +1,39 @@
 .PostList {
-
+    padding-top: 30px;
     & ul {
     display: flex;
     flex-direction: column;
     padding: 0;
     }
 
+    &__button {
+        display: flex;
+        justify-content: center;
+    }
+
     &--light {
         background-color: #F2e9eb;
+
+        & button {
+            background-color: #DD8EA4;
+        }
     }
 
     &--dark {
         background-color: #979197;
+
+         & button {
+            background-color: #554d56;
+        }
     }
 }
 
 li {
     margin: 20px 0px;
+}
+
+.PostList__button button {
+    color: white;
+    width: 150px;
+    height: 50px;
 }

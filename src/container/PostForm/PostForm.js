@@ -3,6 +3,7 @@ import "./PostForm.scss";
 import { useContext, useState } from "react";
 import { StateContext } from "../../state/context/context";
 import Actions from "../../state/Actions/Actions";
+import { useNavigate } from "react-router-dom";
 
 export default function PostForm({state, dispatch}) {
 
@@ -13,9 +14,12 @@ export default function PostForm({state, dispatch}) {
     comments: [],
   });
 
+  const navigate = useNavigate();
+
   function onSubmit(e) {
     e.preventDefault();
     dispatch({type: Actions.addPost, payload: {post: post}});
+    navigate("/");
   }
 
   return (
