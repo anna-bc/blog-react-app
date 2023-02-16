@@ -20,10 +20,10 @@ export default function Header(props) {
         "Header" + " Header" + (state.theme === "light" ? "--light" : "--dark")
       }
     >
-      <div className="header__item header__item--logo">Anna's Blog</div>
+      <div className="header__item header__item--logo" onClick={() => navigate("/")}>Anna's Blog</div>
       <div className="header__item header__item--navigation">
         <ul>
-          <li className="nav__item" key={"Home"}>
+          <li className="nav__item" key={"Home"} onClick={() => navigate("/")} >
             Home
           </li>
           <li className="nav__item" key={"About Me"}>

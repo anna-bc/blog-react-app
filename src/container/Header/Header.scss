@@ -14,6 +14,11 @@
             background-color: #DD8EA4;
             color: white;
         }
+
+        & .nav__item:hover {
+            background-color: #DD8EA4;
+            cursor: pointer;
+        }
     }
 
     &--dark {
@@ -23,6 +28,11 @@
         & div button {
             background-color: #554d56;
             color: white;
+        }
+
+        & .nav__item:hover {
+            background-color: #554d56;
+            cursor: pointer;
         }
     }
 }

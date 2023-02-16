@@ -5,7 +5,7 @@ import { StateContext } from "../../state/context/context";
 import { useNavigate } from "react-router-dom";
 
 export default function PostList() {
-  const {state, dispatch} = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
   const [postsList, setPostsList] = useState([]);
   const navigate = useNavigate();
 
@@ -21,24 +21,17 @@ export default function PostList() {
     }
   }, [state.searchList]);
 
-
   return (
-    <div
-      className={
-        "PostList PostList--" +
-        state.theme
-      }
-    >
-      <div className="PostList__button">
-        <button onClick={() => navigate("/newPost")}>Create New Post</button>
-      </div>
+    <div className={"PostList PostList--" + state.theme}>
+      { state.isLoggedIn ? (
+        <div className="PostList__button">
+          <button onClick={() => navigate("/newPost")}>Create New Post</button>
+        </div>
+      ) : null}
       <ul>
         {postsList.map((post, i) => (
           <li key={i}>
-            <Post
-              post={post}
-            
-            />
+            <Post post={post} />
           </li>
         ))}
       </ul>
