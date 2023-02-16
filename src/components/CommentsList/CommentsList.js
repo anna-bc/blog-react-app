@@ -4,7 +4,7 @@ import Comment from "../Comment/Comment";
 
 function CommentsList(props) {
   return (
-    <div className={"CommentsList" + " CommentsList--" + props.theme}>
+    <div className={"CommentsList CommentsList--" + props.theme}>
       <ul id="commentList">
         {props.comments.map((comment, i) => (
           <li key={i}>

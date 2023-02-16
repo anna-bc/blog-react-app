@@ -1,7 +1,5 @@
 import "./PostForm.scss";
-
-import { useContext, useState } from "react";
-import { StateContext } from "../../state/context/context";
+import { useState } from "react";
 import Actions from "../../state/Actions/Actions";
 import { useNavigate } from "react-router-dom";
 

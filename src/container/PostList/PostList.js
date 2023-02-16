@@ -5,13 +5,13 @@ import { StateContext } from "../../state/context/context";
 import { useNavigate } from "react-router-dom";
 
 export default function PostList() {
-  const { state, dispatch } = useContext(StateContext);
+  const { state } = useContext(StateContext);
   const [postsList, setPostsList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     setPostsList([...state.posts]);
-  }, []);
+  }, [state.posts]);
 
   useEffect(() => {
     if (state.isSearching) {
@@ -19,7 +19,7 @@ export default function PostList() {
     } else {
       setPostsList([...state.posts]);
     }
-  }, [state.searchList]);
+  }, [state.searchList, state.posts, state.isSearching]);
 
   return (
     <div className={"PostList PostList--" + state.theme}>

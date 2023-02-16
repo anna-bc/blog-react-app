@@ -20,7 +20,7 @@ function CommentForm(props) {
   }
 
   return (
-    <div className={"CommentsForm" + " CommentsForm--" + state.theme}>
+    <div className={"CommentsForm CommentsForm--" + state.theme}>
       <form onSubmit={handleCommentSubmit} id="commentForm">
         <input
           type="text"
