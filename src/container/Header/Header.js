@@ -17,7 +17,7 @@ export default function Header(props) {
   return (
     <header
       className={
-        "Header" + " Header" + (state.theme === "light" ? "--light" : "--dark")
+        "Header Header" + (state.theme === "light" ? "--light" : "--dark")
       }
     >
       <div className="header__item header__item--logo" onClick={() => navigate("/")}>Anna's Blog</div>
