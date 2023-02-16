@@ -6,10 +6,12 @@ import CommentForm from "../CommentForm/CommentForm";
 import { StateContext } from "../../state/context/context";
 import Actions from "../../state/Actions/Actions";
 import PostEditForm from "./PostEditForm/PostEditForm";
+import { useNavigate } from "react-router-dom";
 
 export default function Post(props) {
   const {state, dispatch} = useContext(StateContext);
   const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
 
   function handleEditClick() {
     setIsEditing(true);
@@ -29,6 +31,7 @@ export default function Post(props) {
             <div className="post__item content"> {props.post.content} </div>
             <div className="moderationWrapper">
               <div className="moderation__item author">{props.post.author}</div>
+              <div><button onClick={() => navigate(`/post/${state.posts.indexOf(props.post)}`) }>Details</button></div>
               {state.isLoggedIn ? (
                 <div className="moderation__item buttons">
                   <button

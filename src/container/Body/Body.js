@@ -6,29 +6,26 @@ import PostForm from "../PostForm/PostForm";
 import Login from "../Login/Login";
 import Search from "../Search";
 import { StateContext } from "../../state/context/context";
+import PostListPage from "../../components/Pages/PostListPage";
+import { Route, Routes } from "react-router-dom";
+import AppRoutes from "../../AppRoutes";
 
 export default function Body() {
   const { state, dispatch } = useContext(StateContext);
 
   return (
-    <div
-      className={
-        "Body Body--" + state.theme
-      }
-    >
+    <div className={"Body Body--" + state.theme}>
       <div className="sideBarWrapper">
         <Search state={state} dispatch={dispatch} />
-        {state.isLoggedIn ? (
+        {/* {state.isLoggedIn ? (
           <PostForm state={state} dispatch={dispatch} />
-        ) : (
-          null
-        )}
+        ) : null} */}
       </div>
       <div className="posts">
-        <PostList state={state} />
+        <AppRoutes />
       </div>
       <div className="sideBarWrapper">
-        {!state.isLoggedIn ? <Login state={state} dispatch={dispatch} /> : null}
+        {/* {!state.isLoggedIn ? <Login state={state} dispatch={dispatch} /> : null} */}
       </div>
     </div>
   );

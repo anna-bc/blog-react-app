@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import useLogin from "../../Hooks/useLogin";
+import { StateContext } from "../../state/context/context";
 import "./Login.scss";
 
-export default function Login({state, dispatch}) {
+export default function Login() {
+  const {state, dispatch} = useContext(StateContext);
 
   const [isAuthenticated, handleLogin, setUsername, setPassword] = useLogin(dispatch);
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Actions from "../state/Actions/Actions.js";
 import { users as storedUsers } from "../state/models/users.js";
 
@@ -7,6 +8,7 @@ export default function useLogin(dispatch) {
   const [password, setPassword] = useState("");
   const [authInfos, setAuthInfos] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     let authData = checkIfUsernameExists(username);
@@ -24,6 +26,7 @@ export default function useLogin(dispatch) {
 
     setUsername('');
     setPassword('');
+    navigate("/");
   };
 
   useEffect(() => {
